@@ -1,8 +1,10 @@
 package yosriaz.grocery.grocery_store.data.models
 
 import jakarta.persistence.*
+import lombok.Data
 
 @Entity
+@Data
 @Table(name = "actual_stock")
 open class ActualStock {
     @Id

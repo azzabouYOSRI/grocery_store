@@ -1,11 +1,13 @@
 package yosriaz.grocery.grocery_store.data.models
 
 import jakarta.persistence.*
+import lombok.Data
 import yosriaz.grocery.grocery_store.data.enums.CompanyType
 
 @Entity
+@Data
 @Table(name = "company")
-open class Company {
+open class Company(id: Long?, name: String?, card: Card) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

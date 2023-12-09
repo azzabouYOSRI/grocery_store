@@ -1,12 +1,13 @@
 package yosriaz.grocery.grocery_store.data.dto
 
-import jakarta.persistence.*
+import lombok.Data
 import java.io.Serializable
 import java.time.LocalDate
 
 /**
  * DTO for {@link yosriaz.grocery.grocery_store.data.dto.User}
  */
+@Data
 data class UserDto(
     val id: Long? = null,
     val name: String? = null,

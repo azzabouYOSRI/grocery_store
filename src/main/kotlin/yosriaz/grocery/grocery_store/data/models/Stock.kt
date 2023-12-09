@@ -35,4 +35,8 @@ open class Stock {
     @JoinColumn(name = "user_id", nullable = false)
     open var user: User? = null
         protected set
+
+    @ManyToOne(cascade = [CascadeType.REMOVE], optional = false)
+    @JoinColumn(name = "product_id", nullable = false)
+    open var product: Product? = null
 }

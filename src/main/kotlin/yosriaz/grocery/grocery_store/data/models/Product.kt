@@ -19,4 +19,7 @@ open class Product {
 
     @Column(name = "price_ht", nullable = false)
     open var priceHT: Double ? = null
+
+    @OneToMany(mappedBy = "product", orphanRemoval = true)
+    open var stocks: MutableSet<Stock> = mutableSetOf()
 }

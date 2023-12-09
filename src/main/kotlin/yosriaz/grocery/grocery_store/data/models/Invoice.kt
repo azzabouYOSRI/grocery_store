@@ -1,8 +1,8 @@
 package yosriaz.grocery.grocery_store.data.models
 
 import jakarta.persistence.*
-import org.hibernate.annotations.JdbcTypeCode
-import org.hibernate.type.SqlTypes
+import yosriaz.grocery.grocery_store.data.enums.InvoiceTarget
+import yosriaz.grocery.grocery_store.data.enums.InvoiceType
 import java.time.LocalDateTime
 
 @Entity
@@ -22,7 +22,19 @@ open class Invoice {
     open var date: LocalDateTime? = null
         protected set
 
+    @ManyToOne(cascade = [CascadeType.REMOVE], optional = false)
+    @JoinColumn(name = "location_id", nullable = false)
+    open var location: Location? = null
+            protected set
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "invoice_target", nullable = false)
+    open var invoiceTarget: InvoiceTarget? = null
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "invoice_type", nullable = false)
+    open var invoiceType: InvoiceType? = null
 
+    @OneToMany(mappedBy = "invoice", orphanRemoval = true)
+    open var stocks: MutableSet<Stock> = mutableSetOf()
 }
